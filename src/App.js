@@ -90,9 +90,13 @@ function handleClick(event) {
 if (turns<8){
   switchTurn()
 } else {
-  let x = checkWinner()
-  console.log('winner is:', x)
-  alert(`winner is: ${x}`)
+  let winner = checkWinner()
+  if (winner !=null) {
+  console.log('winner is:', winner)
+  alert(`winner is: ${winner}`)
+} else {
+  alert(`It's a tie`)
+}
 }
 
 }
