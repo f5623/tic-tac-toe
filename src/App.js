@@ -2,9 +2,39 @@ import React from 'react';
 import './App.css';
 
 export default function App() {
+//variables
+ let currentPlayer ;
+ let gameBoard = [
+     ['', '', ''],
+     ['', '', ''],
+     ['', '', '']
+  ];
+
+  let turns = 0
+
+//functions
+  function randomStartingPlayer() {
+    (Math.random() < 0.5) ? currentPlayer = 'X' : currentPlayer = 'O';
+  }
+  randomStartingPlayer() 
+
+
+/// handle
+  function handleClickStart(){
+    randomStartingPlayer()
+    gameBoard = [
+        ['null', 'null', 'null'],
+        ['null', 'null', 'null'],
+        ['null', 'null', 'null']
+      ];
+      window.location.reload();
+
+}
+
+
   return (
     <div className="container">
-        <button className="buttonStart" > Start New Game </button>
+        <button className="buttonStart" onClick={handleClickStart}> Start New Game </button>
         <div className="board">
             <button className="square" id="1" >   </button>
             <button className="square" id="2" >   </button>
