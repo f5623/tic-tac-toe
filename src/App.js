@@ -28,6 +28,34 @@ export default function App() {
     turns++;}
   }
 
+  function checkWinner() {
+    // Check rows
+    for (let i = 0; i < 3; i++) {
+      if (gameBoard[i][0] !== '' && gameBoard[i][0] === gameBoard[i][1] && gameBoard[i][1] === gameBoard[i][2]) {
+        return gameBoard[i][0];
+      }
+    }
+  
+    // Check columns
+    for (let i = 0; i < 3; i++) {
+      if (gameBoard[0][i] !== '' && gameBoard[0][i] === gameBoard[1][i] && gameBoard[1][i] === gameBoard[2][i]) {
+        return gameBoard[0][i];
+      }
+    }
+  
+    // Check diagonals
+    if (gameBoard[0][0] !== '' && gameBoard[0][0] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][2]) {
+      return gameBoard[0][0];
+
+    }
+    if (gameBoard[0][2] !== '' && gameBoard[0][2] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][0]) {
+      return gameBoard[0][2];
+
+    }
+  
+    // No winner
+    return null;
+  }  
 
 /// handle
   function handleClickStart(){
@@ -44,7 +72,7 @@ function handleClick(event) {
   const button = event.target;
   const buttonId = button.id;
     const clickedButton = event.target;
-    console.log(event.target, 'before change inside event listener ')
+    // console.log(event.target, 'before change inside event listener ')
     clickedButton.textContent = currentPlayer;
  
   if (buttonId <= 3) {
@@ -64,6 +92,7 @@ if (turns<8){
 } else {
   let x = checkWinner()
   console.log('winner is:', x)
+  alert(`winner is: ${x}`)
 }
 
 }
